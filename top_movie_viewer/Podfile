@@ -5,6 +5,7 @@ target 'top_movie_viewer' do
   # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
   use_frameworks!
 	pod 'AFNetworking', '~> 2.6'
+	pod 'MBProgressHUD'
   # Pods for top_movie_viewer
 
   target 'top_movie_viewerUITests' do
