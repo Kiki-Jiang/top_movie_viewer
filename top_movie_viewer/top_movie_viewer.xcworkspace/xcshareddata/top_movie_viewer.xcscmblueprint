@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "AAEE0CDC9D7FEDD20F7C9297F667A3C9B077F05C",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "91F2A20057DD96A52B347C296BBFFA69C033C9EF" : 9223372036854775807,
+    "AAEE0CDC9D7FEDD20F7C9297F667A3C9B077F05C" : 9223372036854775807
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "EDAE07A3-78CE-489A-9F7E-01D14CB31E0F",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "91F2A20057DD96A52B347C296BBFFA69C033C9EF" : "",
+    "AAEE0CDC9D7FEDD20F7C9297F667A3C9B077F05C" : "top_movie_viewer\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "top_movie_viewer",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "top_movie_viewer\/top_movie_viewer.xcworkspace",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/Kiki-Jiang\/WtfApp.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "91F2A20057DD96A52B347C296BBFFA69C033C9EF"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:Kiki-Jiang\/top_movie_viewer.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "AAEE0CDC9D7FEDD20F7C9297F667A3C9B077F05C"
+    }
+  ]
+}
