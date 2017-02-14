@@ -1,3 +1,4 @@
+
 //
 //  AppDelegate.swift
 //  top_movie_viewer
@@ -16,6 +17,34 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        window = UIWindow(frame: UIScreen.main.bounds)
+        
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        
+        //reference the navigation controller
+        let nowPlayingNavigationController = storyboard.instantiateViewController(withIdentifier: "MoviesNavigationController") as! UINavigationController
+        // get movie view controller (cast to access member)
+        let nowPlayingViewController = nowPlayingNavigationController.topViewController as! MoviesViewController
+        //define the endpoint
+        nowPlayingViewController.endpoint = "now_playing"
+        nowPlayingNavigationController.tabBarItem.title = "Now Playing"
+        nowPlayingNavigationController.tabBarItem.image = UIImage(named: "now_playing")
+        
+        //repeat above steps to make a top-rated controller
+        let topRatedNavigationController = storyboard.instantiateViewController(withIdentifier: "MoviesNavigationController") as! UINavigationController
+        let topRatedViewController = topRatedNavigationController.topViewController as! MoviesViewController
+        //define the endpoint
+        topRatedViewController.endpoint = "top_rated"
+        topRatedNavigationController.tabBarItem.title = "top_rated"
+        topRatedNavigationController.tabBarItem.image = UIImage(named: "top_rated")
+        
+        let tabBarController = UITabBarController ()
+        tabBarController.viewControllers = [nowPlayingNavigationController, topRatedNavigationController]
+        
+        window?.rootViewController = tabBarController
+        window?.makeKeyAndVisible()
+        
+        
         return true
     }
 

@@ -16,7 +16,8 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
     @IBOutlet weak var tableView: UITableView!
 
     var movies : [NSDictionary]?
-        
+    var endpoint: String!
+    
         
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,15 +25,14 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
         tableView.dataSource = self
         tableView.delegate = self
         
-        // Initialize a UIRefreshControl
-        let refreshControl = UIRefreshControl()
+        let refreshControl = UIRefreshControl ()
         refreshControl.addTarget(self, action: #selector(refreshControlAction(_:)), for: UIControlEvents.valueChanged)
         // add refresh control to table view
         tableView.insertSubview(refreshControl, at: 0)
         
         //Network Request Snippet
         let apiKey = "a07e22bc18f5cb106bfe4cc1f83ad8ed"
-        let url = URL(string: "https://api.themoviedb.org/3/movie/now_playing?api_key=\(apiKey)")!
+        let url = URL(string: "https://api.themoviedb.org/3/movie/\(endpoint!)?api_key=\(apiKey)")!
         let request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalCacheData, timeoutInterval: 10)
         let session = URLSession(configuration: .default, delegate: nil, delegateQueue: OperationQueue.main)
         
@@ -40,15 +40,21 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
         let task: URLSessionDataTask = session.dataTask(with: request) { (data: Data?, response: URLResponse?, error: Error?) in
             if let data = data {
                 //Parse Json to make app able to read
+                MBProgressHUD.hide(for: self.view, animated: true)
+
                 if let dataDictionary = try! JSONSerialization.jsonObject(with: data, options: []) as? NSDictionary {
                     print(dataDictionary)
                     
-                    self.movies = dataDictionary["results"] as! [NSDictionary]
-                    self.tableView.reloadData()
+                    if let movies = dataDictionary["results"] as? [NSDictionary]{
+                        self.movies = movies
+                        self.tableView.reloadData()
+
+                    }else{
+                        print("can't cast")
+                    }
                 }
             }
         }
-        MBProgressHUD.hide(for: self.view, animated: true)
         task.resume()
 
 
@@ -62,7 +68,7 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
         
         // ... Create the URLRequest `myRequest` ...
         let apiKey = "a07e22bc18f5cb106bfe4cc1f83ad8ed"
-        let url = URL(string: "https://api.themoviedb.org/3/movie/now_playing?api_key=\(apiKey)")!
+        let url = URL(string: "https://api.themoviedb.org/3/movie/\(endpoint!)?api_key=\(apiKey)")!
         let request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalCacheData, timeoutInterval: 10)
         
         // Configure session so that completion handler is executed on main UI thread
